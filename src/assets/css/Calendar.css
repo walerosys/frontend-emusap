@@ -1,0 +1,93 @@
+/*ESTILOS DE BOTONES*/
+.fc .fc-button-primary {
+    color: #fff;
+    color: var(--fc-button-text-color, #fff);
+    background-color: #7f176881;
+    background-color: var(--fc-button-bg-color, #21B6A8);
+    border-color: #1a252f;
+    border-color: var(--fc-button-border-color, #21B6A8);
+  }
+  .fc .fc-button-primary:hover {
+    color: #fff;
+    color: var(--fc-button-text-color, #fff);
+    background-color: #7f176881;
+    background-color: var(--fc-button-hover-bg-color, #581049);
+    border-color: #1a252f;
+    border-color: var(--fc-button-hover-border-color, #7F1769);
+  }
+  .fc .fc-button-primary:not(:disabled):active,
+  .fc .fc-button-primary:not(:disabled).fc-button-active {
+    color: #fff;
+    color: var(--fc-button-text-color, #fff);
+    background-color: #7f176881;
+    background-color: var(--fc-button-active-bg-color, #7F1769);
+    border-color: #151e27;
+    border-color: var(--fc-button-active-border-color, #7F1769);
+  }
+.fc .fc-button-primary:not(:disabled):active:focus,
+  .fc .fc-button-primary:not(:disabled).fc-button-active:focus {
+    box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
+  }
+/*ESTILOS DE TITULO Y CONTENIDO DE CALENDAR*/
+  .fc-toolbar-title {
+    color: #7F1769;
+  }
+  .fc-scrollgrid-sync-inner {
+    background-color: #21b6a7c4;
+    color: #fff;
+    font-weight: normal;
+  }
+  .fc-daygrid-day-frame {
+    background-color: #eee;
+    color: #7F1769;
+  }
+  .fc-timegrid-slot-label {
+    background-color: #21b6a7c4;
+    color: #fff;
+    font-weight: normal;
+  }
+  .fc-timegrid-axis {
+    background-color: #21b6a7c4;
+    color: #fff;
+  }
+
+  /* // Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 374px) {
+    .calendar-media{
+        font-size: x-small;
+     }
+}
+
+@media (min-width: 375px) and (max-width: 575.98px) {
+    .calendar-media{
+        font-size: small;
+     }
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .calendar-media{
+        font-size: small;
+     }
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .calendar-media{
+        font-size: medium;
+     }
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .calendar-media{
+        font-size: large;
+     }
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .calendar-media{
+       font-size: larger;
+    }
+}

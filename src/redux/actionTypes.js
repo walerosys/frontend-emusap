@@ -1,0 +1,35 @@
+// Search
+export const SEARCH_TOGGLE = 'SEARCH_TOGGLE'
+
+// On Mobile view Rightside toggle
+export const MOBILE_RIGHT_TOGGLE = 'MOBILE_RIGHT_TOGGLE'
+
+
+// Rightsidebar on click of message icon in header
+export const RIGHT_SIDEBAR = 'RIGHT_SIDEBAR'
+
+// SwitchToggle
+export const SWITCH_TOGGLE = 'SWITCH_TOGGLE'
+
+
+//CUSTOMIZER 
+export const ADD_COSTOMIZER ="ADD_COSTOMIZER";
+export const ADD_LAYOUT = "ADD_LAYOUT";
+export const ADD_SIDEBAR_TYPES = "ADD_SIDEBAR_TYPES";
+export const ADD_SIDEBAR_SETTINGS ="ADD_SIDEBAR_SETTINGS";
+export const ADD_COLOR = "ADD_COLOR";
+export const ADD_MIX_BACKGROUND_LAYOUT = "ADD_MIX_BACKGROUND_LAYOUT";
+export const ADD_SIDEBAR_BACKGROUND = "ADD_SIDEBAR_BACKGROUND";
+export const ROUTER_ANIMATION = "ROUTER_ANIMATION";
+
+/* CHAT APP */
+export const GET_MEMBERS = "GET_MEMBERS";
+export const GET_MEMBERS_SUCCESS = "GET_MEMBERS_SUCCESS";
+export const GET_CHATS = "GET_CHATS";
+export const GET_CHATS_SUCCESS = "GET_CHATS_SUCCESS";
+export const UPDATE_SELECTED_USER = "UPDATE_SELECTED_USER";
+export const CHANGE_CHAT = "CHANGE_CHAT";
+export const CREATE_CHAT = "CREATE_CHAT";
+export const SEARCH_MEMBER = "SEARCH_MEMBER";
+export const SEND_MESSAGE = "SEND_MESSAGE";
+export const REPLY_BY_SELECTED_USER = "REPLY_BY_SELECTED_USER";

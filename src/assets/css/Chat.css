@@ -1,0 +1,22 @@
+.chat-right-aside{
+  flex: 0 0 95%;
+  max-width: 95%;
+  overflow: hidden;
+}
+
+.sc-chat-window {
+  z-index: 1055 !important;
+}
+
+.sc-launcher {
+  cursor: pointer;
+  z-index: 1055 !important;
+}
+
+@media only screen and (max-width: 1366px) {
+  .chat-right-aside{
+    flex: 0 0 95% !important;
+    max-width: 95% !important;
+    overflow: hidden !important;
+  }
+}

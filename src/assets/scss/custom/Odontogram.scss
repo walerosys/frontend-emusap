@@ -1,0 +1,45 @@
+.customizer-links{
+  position: fixed;
+  right: 00px;
+  top: 50%;
+  background-color: $white;
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 0 15px 3px rgba(176, 185, 189, 0.3);
+  transition: all 0.3s ease;
+  &.open{
+    right: 330px;
+    border-radius: 8px 0 0 8px;
+    transition: all 0.3s ease;
+  }
+  .nav-link{
+    padding: 0;
+    border-radius: 0;
+    border: none !important;
+    .settings{
+      i{
+        color: $primary-color;
+        font-size: 24px;
+        padding: 15px 17px;
+        display: inline-block;
+        cursor: pointer;
+        margin: 0;
+      }
+    }
+    &.active{
+      .settings {
+        i{
+          color: $white;
+          background-color: $primary-color;
+        }
+      }
+    }
+    &+.nav-link{
+      border-top: 1px solid rgba($primary-color, 0.1);
+    }
+  }
+  .nav-tabs {
+    border-bottom: none !important;
+  }
+}

@@ -1,0 +1,5 @@
+@media only screen and (max-width: 1366px) {
+    .page-main-header .main-header-right .nav-right > ul > li .badge{
+        display: block !important;
+    }
+}
