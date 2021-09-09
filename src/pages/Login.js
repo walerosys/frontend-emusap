@@ -37,7 +37,7 @@ const Login = (props) => {
     setLoading(true);
     dispatch({ type: "LOADING_AUTH", payload: true });
     try {
-      let res = await Axios.post(`${url}auth/login/`, {
+      let res = await Axios.post(`${url}auth/login`, {
         email: credentials.user,
         password: credentials.pass,
       });
