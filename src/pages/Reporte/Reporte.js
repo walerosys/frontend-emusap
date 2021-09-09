@@ -240,7 +240,7 @@ const Reporte = () => {
                         style={{ background: "#02a499", color: "#fff" }}
                         colSpan="9"
                       >
-                        Lista de Tickets
+                        Lista de Instalaciones
                       </th>
                     </tr>
                     <tr>
@@ -248,7 +248,7 @@ const Reporte = () => {
                         #
                       </th>
                       <th style={{ background: "#02a499", color: "#fff" }}>
-                        N°Ticket
+                        N°
                       </th>
 
                       <th style={{ background: "#02a499", color: "#fff" }}>
@@ -258,13 +258,13 @@ const Reporte = () => {
                         At. Por
                       </th>
                       <th style={{ background: "#02a499", color: "#fff" }}>
-                        SubGerencia
+                        Ssss
                       </th>
                       <th style={{ background: "#02a499", color: "#fff" }}>
-                        Servicio
+                        Sttt
                       </th>
                       <th style={{ background: "#02a499", color: "#fff" }}>
-                        Ventanilla
+                        costo
                       </th>
                     </tr>
                   </thead>

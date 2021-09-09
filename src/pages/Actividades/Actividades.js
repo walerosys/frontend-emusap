@@ -227,7 +227,7 @@ const Actividades = () => {
               MySwal.fire({
                 icon: "success",
                 title: "Genial",
-                text: "La ventanilla ha sido creado exitosamente",
+                text: "La actividad ha sido creado exitosamente",
               });
               toggle();
               getActividades();
@@ -328,7 +328,7 @@ const Actividades = () => {
           />
         ) : null}
         <Row>
-          <BreadCrumb parent="Ventanillas" subparent="Lista" title="General" />
+          <BreadCrumb parent="Actividades" subparent="Lista" title="General" />
         </Row>
         <Row className="d-flex justify-content-center">
           <Col className="text-center">
