@@ -46,7 +46,7 @@ const Login = (props) => {
       //if (response.success) {
       setLoading(false);
       dispatch({ type: "LOADING_AUTH", payload: false });
-      if (response.usuario[0].tipo_de_usuario === "user") {
+      if (response.usuario[0].tipo_de_usuario === "admin") {
         dispatch({ type: "SIGNIN", payload: response });
       } else {
         MySwal.fire({
