@@ -37,7 +37,7 @@ const Login = (props) => {
     setLoading(true);
     dispatch({ type: "LOADING_AUTH", payload: true });
     try {
-      let res = await Axios.post(`${url}auth/login/`, {
+      let res = await Axios.post(`${url}auth/login`, {
         email: credentials.user,
         password: credentials.pass,
       });
@@ -46,7 +46,7 @@ const Login = (props) => {
       //if (response.success) {
       setLoading(false);
       dispatch({ type: "LOADING_AUTH", payload: false });
-      if (response.usuario[0].tipo_de_usuario === "user") {
+      if (response.usuario[0].tipo_de_usuario === "admin") {
         dispatch({ type: "SIGNIN", payload: response });
       } else {
         MySwal.fire({
