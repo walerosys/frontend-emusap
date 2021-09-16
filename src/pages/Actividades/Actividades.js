@@ -257,10 +257,10 @@ const Actividades = () => {
   const formato = (fecha) => {
     return moment(fecha).format("DD/MM/YYYY hh:mm a");
   };
-  const updateEstadoVentanilla = async (item, estado) => {
+  const eliminarActividad = async (item, estado) => {
     SweetAlert.fire({
       title: "Esta seguro(a)?",
-      text: (!estado ? "Inhabilitar " : "Habilitar ") + item.nombre,
+      text: "Eliminar",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -271,16 +271,15 @@ const Actividades = () => {
         setLoading(true);
         try {
           const config = {
-            headers: { Authorization: `Token ${token}` },
+            headers: { Authorization: `Bearer ${token}` },
           };
-          let res = await axios
-            .patch /*
-            `${url}appticket/ventanillas/${item.id}/`,
+          let res = await axios.post(
+            `${url}auth/deleteactividad`,
             {
-              estado: estado,
+              id: item.id,
             },
-            config*/
-            ();
+            config
+          );
           let response = await res.data;
           console.log(response);
           if (response.success) {
@@ -289,11 +288,7 @@ const Actividades = () => {
               icon: "success",
               title: "Genial",
               text:
-                "La " +
-                item.nombre +
-                " ha sido " +
-                (!estado ? "inhabilitado" : "habilitado") +
-                " exitosamente.",
+                "La " + "actividad" + " ha sido eliminado" + " exitosamente.",
             });
             //getVentanillas();
             getActividades();
@@ -471,33 +466,18 @@ const Actividades = () => {
                                     <i className="fa fa-edit"></i>
                                     &nbsp; Editar
                                   </DropdownItem>
-                                  {item.estado ? (
-                                    <DropdownItem
-                                      style={{
-                                        background: "#ec4561",
-                                        color: "#fff",
-                                      }}
-                                      onClick={() =>
-                                        updateEstadoVentanilla(item, false)
-                                      }
-                                    >
-                                      <i className="fa fa-ban"></i>
-                                      &nbsp; Inhabilitar
-                                    </DropdownItem>
-                                  ) : (
-                                    <DropdownItem
-                                      style={{
-                                        background: "#02a499",
-                                        color: "#fff",
-                                      }}
-                                      onClick={() =>
-                                        updateEstadoVentanilla(item, true)
-                                      }
-                                    >
-                                      <i className="fa fa-unlock-alt"></i>
-                                      &nbsp; Habilitar
-                                    </DropdownItem>
-                                  )}
+                                  <DropdownItem
+                                    style={{
+                                      background: "#ec4561",
+                                      color: "#fff",
+                                    }}
+                                    onClick={() =>
+                                      eliminarActividad(item, false)
+                                    }
+                                  >
+                                    <i className="fa fa-ban"></i>
+                                    &nbsp; Eliminar
+                                  </DropdownItem>
                                 </DropdownMenu>
                               </UncontrolledDropdown>
                             </td>
