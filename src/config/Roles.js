@@ -13,6 +13,7 @@ import MonitorActual from "../pages/Monitor/Monitor";
 import PanelPrincipal from "../pages/PanelPrincipal/PanelPrincipal";
 import Reportes from "../pages/Reporte/Reporte";
 import Actividades from "../pages/Actividades/Actividades";
+import Tipos from "../pages/Tipo/Tipo";
 
 export const MENU = () => {
   let Items = [
@@ -31,6 +32,15 @@ export const MENU = () => {
       type: "link",
       path: `${process.env.PUBLIC_URL}/actividades`,
       component: Actividades,
+      active: false,
+      bookmark: true,
+    },
+    {
+      title: "Tipos Inst.",
+      icon: Award,
+      type: "link",
+      path: `${process.env.PUBLIC_URL}/tipos`,
+      component: Tipos,
       active: false,
       bookmark: true,
     },

@@ -2,6 +2,7 @@
 //const { Items } = MenuItems();
 import { Home, Award } from "react-feather";
 import Actividades from "../../pages/Actividades/Actividades";
+import Tipos from "../../pages/Tipo/Tipo";
 import Reportes from "../../pages/Reporte/Reporte";
 import PanelPrincipal from "../../pages/PanelPrincipal/PanelPrincipal";
 import Reporte from "../../pages/Reporte/Reporte";
@@ -26,6 +27,15 @@ export const MENUITEMS = [
     bookmark: true,
   },
   {
+    title: "Tipos Inst.",
+    icon: Award,
+    type: "link",
+    path: `${process.env.PUBLIC_URL}/tipos`,
+    component: Tipos,
+    active: false,
+    bookmark: true,
+  },
+  {
     title: "Reporte",
     icon: Award,
     type: "link",
@@ -33,5 +43,5 @@ export const MENUITEMS = [
     component: Reportes,
     active: false,
     bookmark: true,
-  }
+  },
 ];
