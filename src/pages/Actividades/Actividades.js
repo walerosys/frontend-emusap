@@ -98,7 +98,7 @@ const Actividades = () => {
         headers: { Authorization: `Bearer ${token}` },
       };
       let res = await axios.get(
-        `${url}auth/buscaractividad/?per_page=${formato.fila}&page=${formato.page}&search=${search}`,
+        `${url}auth/buscaractividad?per_page=${formato.fila}&page=${formato.page}&search=${search}`,
         config
       );
       let response = await res.data;
@@ -135,7 +135,7 @@ const Actividades = () => {
     };
     try {
       let res = await axios.get(
-        `${url}auth/allactividad/?per_page=${formato.fila}&page=${formato.page}`,
+        `${url}auth/allactividad?per_page=${formato.fila}&page=${formato.page}`,
         config
       );
       let response = res.data;

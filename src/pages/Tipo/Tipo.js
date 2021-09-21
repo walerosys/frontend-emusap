@@ -59,7 +59,7 @@ const Tipo = () => {
         headers: { Authorization: `Bearer ${token}` },
       };
       let res = await axios.get(
-        `${url}auth/buscartipo/?search=${search}`,
+        `${url}auth/buscartipo?search=${search}`,
         config
       );
       let response = await res.data;
