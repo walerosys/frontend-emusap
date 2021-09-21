@@ -25,15 +25,10 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import url from "../../config/Url";
 import SweetAlert from "sweetalert2";
-//import ReactExport from "react-data-export";
-import ExcelExport from "react-export-excel";
 import withReactContent from "sweetalert2-react-content";
 import { toast } from "react-toastify";
 toast.configure();
 const MySwal = withReactContent(SweetAlert);
-const ExcelFile = ExcelExport.ExcelFile;
-const ExcelSheet = ExcelExport.ExcelSheet;
-const ExcelColumn = ExcelExport.ExcelColumn;
 
 const Tipo = () => {
   const token = useSelector((state) => state.Auth.token);
@@ -54,25 +49,24 @@ const Tipo = () => {
     setSearch(e.target.value);
   };
   useEffect(() => {
-    searchVentanilla();
+    searchTipo();
   }, [search]);
 
-  const searchVentanilla = async () => {
+  const searchTipo = async () => {
     setLoading(true);
     try {
       const config = {
-        headers: { Authorization: `Token ${token}` },
+        headers: { Authorization: `Bearer ${token}` },
       };
-      let res = await axios
-        .get /*
-        `${url}appticket/ventanillas/?search=${search}`,
-        config*/
-        ();
+      let res = await axios.get(
+        `${url}auth/buscartipo/?search=${search}`,
+        config
+      );
       let response = await res.data;
       console.log(response);
       if (response.success) {
-        if (response.data.length !== 0) {
-          setTipos(response.data);
+        if (response.data.data.length !== 0) {
+          setTipos(response.data.data);
           setVacio(false);
         } else {
           setVacio(true);
@@ -350,24 +344,7 @@ const Tipo = () => {
                       &nbsp;Nuevo
                     </Button>
                   </Col>
-                  <Col sm="2" className="text-right">
-                    {tipos.length !== 0 ? (
-                      <ExcelFile
-                        element={
-                          <Button className="btn btn-success waves-effect waves-light">
-                            <i className="icofont icofont-file-excel"></i>
-                            &nbsp;Excel
-                          </Button>
-                        }
-                      >
-                        <ExcelSheet data={dataSet2[0]} name="hoja 1">
-                          <ExcelColumn label="N°" value="id" />
-                          <ExcelColumn label="CÓDIGO" value="codigo" />
-                          <ExcelColumn label="NOMBRE" value="nombre" />
-                        </ExcelSheet>
-                      </ExcelFile>
-                    ) : null}
-                  </Col>
+                  <Col sm="2" className="text-right"></Col>
                   <Col sm="2">
                     <Button className="btn btn-danger waves-effect waves-light">
                       <i className="fa fa-file-pdf-o"></i>

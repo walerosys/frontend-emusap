@@ -25,15 +25,10 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import url from "../../config/Url";
 import SweetAlert from "sweetalert2";
-//import ReactExport from "react-data-export";
-import ExcelExport from "react-export-excel";
 import withReactContent from "sweetalert2-react-content";
 import { toast } from "react-toastify";
 toast.configure();
 const MySwal = withReactContent(SweetAlert);
-const ExcelFile = ExcelExport.ExcelFile;
-const ExcelSheet = ExcelExport.ExcelSheet;
-const ExcelColumn = ExcelExport.ExcelColumn;
 
 const Actividades = () => {
   const token = useSelector((state) => state.Auth.token);
@@ -52,36 +47,82 @@ const Actividades = () => {
   const [loading, setLoading] = useState(false);
   const [vacio, setVacio] = useState(false);
   const [search, setSearch] = useState("");
+  const [totalpage, setTotalpage] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [formato, setFormato] = useState({
+    fila: 5,
+    page: 1,
+  });
 
   const handleChange = (e) => {
-    setSearch(e.target.value);
+    if (e.target.name === "fila") {
+      setFormato({
+        ...formato,
+        fila: e.target.value,
+        page: 1,
+      });
+      // getActividades();
+    } else {
+      setFormato({
+        ...formato,
+        page: 1,
+      });
+      setSearch(e.target.value);
+    }
+  };
+  const increment = () => {
+    //if(totalpage>1){
+    if (formato.page < totalpage) {
+      setFormato({
+        ...formato,
+        page: formato.page + 1,
+      });
+    }
+  };
+  const decrement = () => {
+    if (formato.page > 1) {
+      setFormato({
+        ...formato,
+        page: formato.page - 1,
+      });
+    }
   };
   useEffect(() => {
-    searchVentanilla();
-  }, [search]);
+    searchActividades();
+  }, [search, formato.fila, formato.page]);
 
-  const searchVentanilla = async () => {
+  const searchActividades = async () => {
     setLoading(true);
     try {
       const config = {
-        headers: { Authorization: `Token ${token}` },
+        headers: { Authorization: `Bearer ${token}` },
       };
-      let res = await axios
-        .get /*
-        `${url}appticket/ventanillas/?search=${search}`,
-        config*/
-        ();
+      let res = await axios.get(
+        `${url}auth/buscaractividad/?per_page=${formato.fila}&page=${formato.page}&search=${search}`,
+        config
+      );
       let response = await res.data;
       console.log(response);
       if (response.success) {
-        if (response.data.length !== 0) {
-          setActividades(response.data);
+        if (response.data.data.length !== 0) {
+          setActividades(response.data.data);
+          setTotal(response.data.total);
+          setTotalpage(response.data.last_page);
           setVacio(false);
         } else {
           setVacio(true);
         }
         setLoading(false);
       }
+      /* if (response.success) {
+        if (response.data.data.length !== 0) {
+          setActividades(response.data.data);
+          setVacio(false);
+        } else {
+          setVacio(true);
+        }
+        setLoading(false);
+      }*/
     } catch (e) {
       console.log(e);
     }
@@ -92,15 +133,18 @@ const Actividades = () => {
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
-    console.log("config");
-    console.log(config);
-    console.log("config");
     try {
-      let res = await axios.get(`${url}auth/allactividad`, config);
+      let res = await axios.get(
+        `${url}auth/allactividad/?per_page=${formato.fila}&page=${formato.page}`,
+        config
+      );
       let response = res.data;
-      console.log(response);
+      console.log(response.data.last_page);
+      console.log(formato.page);
       if (response.success) {
-        setActividades(response.data);
+        setActividades(response.data.data);
+        setTotal(response.data.total);
+        setTotalpage(response.data.last_page);
         setLoading(false);
       }
     } catch (error) {
@@ -254,9 +298,9 @@ const Actividades = () => {
       clearActividad();
     }
   }, [modal]);
-  const formato = (fecha) => {
+  /* const formato = (fecha) => {
     return moment(fecha).format("DD/MM/YYYY hh:mm a");
-  };
+  };*/
   const eliminarActividad = async (item, estado) => {
     SweetAlert.fire({
       title: "Esta seguro(a)?",
@@ -351,7 +395,25 @@ const Actividades = () => {
                       </InputGroup>
                     </FormGroup>
                   </Col>
-                  <Col sm="5" className="text-right">
+                  <Col sm="1" className="text-left">
+                    <label>Fila por Página:</label>
+                  </Col>
+                  <Col sm="2" className="text-left">
+                    <Input
+                      className="form-control"
+                      type="select"
+                      name="fila"
+                      onChange={handleChange}
+                      value={formato.fila}
+                    >
+                      <option value={5}>5</option>
+                      <option value={10}>10</option>
+                      <option value={20}>20</option>
+                      <option value={50}>50</option>
+                      <option value={100}>100</option>
+                    </Input>
+                  </Col>
+                  <Col sm="4" className="text-right">
                     <Button
                       className="btn btn-primary waves-effect waves-light"
                       onClick={() => toggle()}
@@ -359,29 +421,6 @@ const Actividades = () => {
                       <i className="fa fa-plus"></i>
                       &nbsp;Nuevo
                     </Button>
-                  </Col>
-                  <Col sm="2" className="text-right">
-                    {actividades.length !== 0 ? (
-                      <ExcelFile
-                        element={
-                          <Button className="btn btn-success waves-effect waves-light">
-                            <i className="icofont icofont-file-excel"></i>
-                            &nbsp;Excel
-                          </Button>
-                        }
-                      >
-                        <ExcelSheet data={dataSet2[0]} name="hoja 1">
-                          <ExcelColumn label="N°" value="id" />
-                          <ExcelColumn label="NOMBRE" value="nombre" />
-                          <ExcelColumn label="ACTIVIDAD" value="actividad" />
-                          <ExcelColumn
-                            label="UNIDAD"
-                            value="unidad_de_medida"
-                          />
-                          <ExcelColumn label="COSTO" value="costo" />
-                        </ExcelSheet>
-                      </ExcelFile>
-                    ) : null}
                   </Col>
                   <Col sm="2">
                     <Button className="btn btn-danger waves-effect waves-light">
@@ -487,6 +526,46 @@ const Actividades = () => {
                     )}
                   </tbody>
                 </Table>
+                <Row>
+                  <Col className="d-flex justify-content-center">
+                    {total !== 0 ? (
+                      <>
+                        <Table hover>
+                          <thead>
+                            <tr>
+                              <th
+                                style={{ background: "#02a499", color: "#fff" }}
+                                colSpan="7"
+                              >
+                                <Button
+                                  className="btn btn-primary waves-effect waves-light"
+                                  onClick={() => decrement()}
+                                  disabled={formato.page == 1 ? true : false}
+                                >
+                                  <i className="fa fa-angle-double-left"></i>
+                                  &nbsp;
+                                </Button>
+                                <Button
+                                  className="btn btn-primary waves-effect waves-light"
+                                  onClick={() => increment()}
+                                  disabled={
+                                    totalpage == formato.page ? true : false
+                                  }
+                                >
+                                  <i className="fa fa-angle-double-right"></i>
+                                  &nbsp;
+                                </Button>
+                                <label style={{ marginLeft: "0.8rem" }}>
+                                  Página:{formato.page}
+                                </label>
+                              </th>
+                            </tr>
+                          </thead>
+                        </Table>
+                      </>
+                    ) : null}
+                  </Col>
+                </Row>
               </CardBody>
             </Card>
           </Col>
