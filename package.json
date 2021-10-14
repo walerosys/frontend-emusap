@@ -29,6 +29,7 @@
     "@types/googlemaps": "^3.39.6",
     "@types/markerclustererplus": "^2.1.33",
     "ace-builds": "^1.4.9",
+    "antd": "^4.16.13",
     "apexcharts": "^3.15.2",
     "axios": "^0.19.2",
     "body-scroll-lock": "^3.0.1",

@@ -6,14 +6,21 @@ import {
   PhoneCall,
   Airplay,
   Users,
+  FileText,
   Settings,
+  List,
+  BarChart2,
+  Aperture,
+  User,
 } from "react-feather";
 //import Task from "../pages/admin/task/Task";
 import MonitorActual from "../pages/Monitor/Monitor";
 import PanelPrincipal from "../pages/PanelPrincipal/PanelPrincipal";
+import Instalacion from "../pages/Instalacion/Instalacion";
 import Reportes from "../pages/Reporte/Reporte";
 import Actividades from "../pages/Actividades/Actividades";
 import Tipos from "../pages/Tipo/Tipo";
+import Perfil from "../pages/usuario/Perfil";
 
 export const MENU = () => {
   let Items = [
@@ -27,8 +34,26 @@ export const MENU = () => {
       bookmark: true,
     },
     {
+      title: "Perfil",
+      icon: Users,
+      type: "link",
+      path: `${process.env.PUBLIC_URL}/perfil`,
+      component: Perfil,
+      active: false,
+      bookmark: true,
+    },
+    {
+      title: "Instalación",
+      icon: Aperture,
+      type: "link",
+      path: `${process.env.PUBLIC_URL}/instalacion`,
+      component: Instalacion,
+      active: false,
+      bookmark: true,
+    },
+    {
       title: "Actividades",
-      icon: Award,
+      icon: List,
       type: "link",
       path: `${process.env.PUBLIC_URL}/actividades`,
       component: Actividades,
@@ -37,7 +62,7 @@ export const MENU = () => {
     },
     {
       title: "Tipos Inst.",
-      icon: Award,
+      icon: List,
       type: "link",
       path: `${process.env.PUBLIC_URL}/tipos`,
       component: Tipos,
@@ -46,7 +71,7 @@ export const MENU = () => {
     },
     {
       title: "Reportes",
-      icon: Award,
+      icon: BarChart2,
       type: "link",
       path: `${process.env.PUBLIC_URL}/reportes`,
       component: Reportes,

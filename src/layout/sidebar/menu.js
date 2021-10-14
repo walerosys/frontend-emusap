@@ -1,13 +1,14 @@
 //import MenuItems from '../../config/Roles2';
 //const { Items } = MenuItems();
-import { Home, Award } from "react-feather";
+import { Home, Award, List, BarChart2, Aperture, Users } from "react-feather";
 import Actividades from "../../pages/Actividades/Actividades";
+import Instalacion from "../../pages/Instalacion/Instalacion";
 import Tipos from "../../pages/Tipo/Tipo";
+import Perfil from "../../pages/usuario/Perfil";
 import Reportes from "../../pages/Reporte/Reporte";
 import PanelPrincipal from "../../pages/PanelPrincipal/PanelPrincipal";
-import Reporte from "../../pages/Reporte/Reporte";
 //export const MENUITEMS = Items;
-export const MENUITEMS = [
+export const MENUADMIN = [
   {
     title: "Panel Principal",
     icon: Home,
@@ -18,8 +19,26 @@ export const MENUITEMS = [
     bookmark: true,
   },
   {
+    title: "Perfil",
+    icon: Users,
+    type: "link",
+    path: `${process.env.PUBLIC_URL}/perfil`,
+    component: Perfil,
+    active: false,
+    bookmark: true,
+  },
+  {
+    title: "Instalación",
+    icon: Aperture,
+    type: "link",
+    path: `${process.env.PUBLIC_URL}/instalacion`,
+    component: Instalacion,
+    active: false,
+    bookmark: true,
+  },
+  {
     title: "Actividades",
-    icon: Award,
+    icon: List,
     type: "link",
     path: `${process.env.PUBLIC_URL}/Actividades`,
     component: Actividades,
@@ -28,7 +47,7 @@ export const MENUITEMS = [
   },
   {
     title: "Tipos Inst.",
-    icon: Award,
+    icon: List,
     type: "link",
     path: `${process.env.PUBLIC_URL}/tipos`,
     component: Tipos,
@@ -37,10 +56,58 @@ export const MENUITEMS = [
   },
   {
     title: "Reporte",
-    icon: Award,
+    icon: BarChart2,
     type: "link",
     path: `${process.env.PUBLIC_URL}/reportes`,
     component: Reportes,
+    active: false,
+    bookmark: true,
+  },
+];
+
+export const MENUUSUARIO = [
+  {
+    title: "Panel Principal",
+    icon: Home,
+    type: "link",
+    path: `${process.env.PUBLIC_URL}/principal`,
+    component: PanelPrincipal,
+    active: false,
+    bookmark: true,
+  },
+  {
+    title: "Perfil",
+    icon: Users,
+    type: "link",
+    path: `${process.env.PUBLIC_URL}/perfil`,
+    component: Perfil,
+    active: false,
+    bookmark: true,
+  },
+  {
+    title: "Instalación",
+    icon: Aperture,
+    type: "link",
+    path: `${process.env.PUBLIC_URL}/instalacion`,
+    component: Instalacion,
+    active: false,
+    bookmark: true,
+  },
+  {
+    title: "Actividades",
+    icon: List,
+    type: "link",
+    path: `${process.env.PUBLIC_URL}/Actividades`,
+    component: Actividades,
+    active: false,
+    bookmark: true,
+  },
+  {
+    title: "Tipos Inst.",
+    icon: List,
+    type: "link",
+    path: `${process.env.PUBLIC_URL}/tipos`,
+    component: Tipos,
     active: false,
     bookmark: true,
   },

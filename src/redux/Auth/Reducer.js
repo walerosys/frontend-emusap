@@ -1,12 +1,14 @@
 const data = localStorage.getItem("data") || "";
 const AuthStatus = localStorage.getItem("AuthStatus") || false;
 const perfil = localStorage.getItem("perfil") || "";
+const usdatos = localStorage.getItem("usuario") || "";
 
 const initialState = {
   token: data,
   perfil: perfil,
   AuthStatus: AuthStatus,
   notification: [],
+  usuario: usdatos,
   loading: false,
 };
 
@@ -17,11 +19,16 @@ export default (state = initialState, action) => {
       localStorage.setItem("data", action.payload.token);
       localStorage.setItem("AuthStatus", true);
       localStorage.setItem("perfil", action.payload.usuario[0].tipo_de_usuario);
+      localStorage.setItem(
+        "usuario",
+        JSON.stringify(action.payload.usuario[0])
+      );
       return {
         ...state,
         token: action.payload.token,
         AuthStatus: true,
         perfil: action.payload.usuario[0].tipo_de_usuario,
+        usuario: JSON.stringify(action.payload.usuario[0]),
       };
     case "SIGNOUT":
       localStorage.removeItem("data");

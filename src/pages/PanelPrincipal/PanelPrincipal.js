@@ -198,22 +198,22 @@ const PanelPrincipal = () => {
   const contratos = [
     {
       color: "success",
-      text: "10 SERVICIOS",
+      text: "10 PRUEBA1",
       icon: "cubes",
     },
     {
       color: "info",
-      text: "6 VENTANILLAS",
+      text: "6 PRUEBA2",
       icon: "star",
     },
     {
       color: "primary",
-      text: "6 ASESORES",
+      text: "6 PRUEBA3",
       icon: "users-alt-3",
     },
     {
       color: "secondary",
-      text: "125 TICKETS",
+      text: "125 PRUEBA4",
       icon: "ticket",
     },
   ];

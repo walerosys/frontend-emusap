@@ -3,9 +3,9 @@ import React, { Fragment, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import configDB from "../data/customizer/config";
-import { MENUITEMS } from "./sidebar/menu";
+//import { MENUITEMS } from "./sidebar/menu";
 
-const Sidebar = ({ content }) => {
+const Sidebar = ({ MENUITEMS }) => {
   const [mainmenu, setMainMenu] = useState(MENUITEMS);
   const switchToggle = useSelector((state) => state.Common.switchToggle);
   const [margin, setMargin] = useState(0);
