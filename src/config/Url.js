@@ -1,4 +1,4 @@
-const url = "http://localhost:8000/api/";
+const url = "https://api-emusap.herokuapp.com/api/";
 //http://localhost:8000 https://api-emusap.herokuapp.com
 export const tokenDni =
   "s11Y8VFhrn7jfbwWkPcGi1lm5xR4LSWfW5TDz8MLbzqDvldqxkgdIpHoKlvc";
