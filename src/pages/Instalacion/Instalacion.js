@@ -295,7 +295,7 @@ const Instalacion = () => {
         {
           tipo_id: form.tipo_id,
           uservicio_id: 1,
-          user_id: 5,
+          user_id: 2,
           fecha: "2021-08-13 19:07:45",
           sub_total: form.sub_total,
           utilidad: form.utilidad,
