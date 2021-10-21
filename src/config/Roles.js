@@ -21,6 +21,7 @@ import Reportes from "../pages/Reporte/Reporte";
 import Actividades from "../pages/Actividades/Actividades";
 import Tipos from "../pages/Tipo/Tipo";
 import Perfil from "../pages/usuario/Perfil";
+import Usuario from "../pages/usuario/Usuario";
 
 export const MENU = () => {
   let Items = [
@@ -35,7 +36,7 @@ export const MENU = () => {
     },
     {
       title: "Perfil",
-      icon: Users,
+      icon: User,
       type: "link",
       path: `${process.env.PUBLIC_URL}/perfil`,
       component: Perfil,
@@ -66,6 +67,15 @@ export const MENU = () => {
       type: "link",
       path: `${process.env.PUBLIC_URL}/tipos`,
       component: Tipos,
+      active: false,
+      bookmark: true,
+    },
+    {
+      title: "Usuarios",
+      icon: Users,
+      type: "link",
+      path: `${process.env.PUBLIC_URL}/usuarios`,
+      component: Usuario,
       active: false,
       bookmark: true,
     },
