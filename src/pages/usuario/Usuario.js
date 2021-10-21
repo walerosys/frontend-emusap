@@ -258,10 +258,6 @@ const Usuario = () => {
     return moment(fecha).format("DD/MM/YYYY hh:mm a");
   };
   const eliminarUsuario = async (item, estado) => {
-    console.log("todavía");
-  };
-  /*
-  const eliminarUsuario = async (item, estado) => {
     SweetAlert.fire({
       title: "Esta seguro(a)?",
       text: "Eliminar",
@@ -278,7 +274,7 @@ const Usuario = () => {
             headers: { Authorization: `Bearer ${token}` },
           };
           let res = await axios.post(
-            `${url}auth/deletetipo`,
+            `${url}auth/deleteusuario`,
             {
               id: item.id,
             },
@@ -291,21 +287,16 @@ const Usuario = () => {
             MySwal.fire({
               icon: "success",
               title: "Genial",
-              text:
-                "El" +
-                "tipo de Inst." +
-                " ha sido eliminado" +
-                " exitosamente.",
+              text: "El" + "Usuario" + " ha sido eliminado" + " exitosamente.",
             });
-            //getVentanillas();
-            getTipos();
+            getUsuarios();
           }
         } catch (e) {
           console.log(e);
         }
       }
     });
-  };*/
+  };
   /* const dataSet2 = [
     tipos.map((data) => ({
       id: data.id,
