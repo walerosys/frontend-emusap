@@ -11,6 +11,7 @@ import {
 } from "react-feather";
 import Actividades from "../../pages/Actividades/Actividades";
 import Instalacion from "../../pages/Instalacion/Instalacion";
+import ListaInstalacion from "../../pages/Instalacion/Lista";
 import Tipos from "../../pages/Tipo/Tipo";
 import Perfil from "../../pages/usuario/Perfil";
 import Usuario from "../../pages/usuario/Usuario";
@@ -42,6 +43,15 @@ export const MENUADMIN = [
     type: "link",
     path: `${process.env.PUBLIC_URL}/instalacion`,
     component: Instalacion,
+    active: false,
+    bookmark: true,
+  },
+  {
+    title: "List. Instalación",
+    icon: List,
+    type: "link",
+    path: `${process.env.PUBLIC_URL}/lista`,
+    component: ListaInstalacion,
     active: false,
     bookmark: true,
   },
@@ -108,6 +118,15 @@ export const MENUUSUARIO = [
     type: "link",
     path: `${process.env.PUBLIC_URL}/instalacion`,
     component: Instalacion,
+    active: false,
+    bookmark: true,
+  },
+  {
+    title: "List. Instalación",
+    icon: List,
+    type: "link",
+    path: `${process.env.PUBLIC_URL}/lista`,
+    component: ListaInstalacion,
     active: false,
     bookmark: true,
   },

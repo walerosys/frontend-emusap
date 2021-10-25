@@ -17,6 +17,7 @@ import {
 import MonitorActual from "../pages/Monitor/Monitor";
 import PanelPrincipal from "../pages/PanelPrincipal/PanelPrincipal";
 import Instalacion from "../pages/Instalacion/Instalacion";
+import ListaInstalacion from "../pages/Instalacion/Lista";
 import Reportes from "../pages/Reporte/Reporte";
 import Actividades from "../pages/Actividades/Actividades";
 import Tipos from "../pages/Tipo/Tipo";
@@ -49,6 +50,15 @@ export const MENU = () => {
       type: "link",
       path: `${process.env.PUBLIC_URL}/instalacion`,
       component: Instalacion,
+      active: false,
+      bookmark: true,
+    },
+    {
+      title: "List. Instalación",
+      icon: List,
+      type: "link",
+      path: `${process.env.PUBLIC_URL}/lista`,
+      component: ListaInstalacion,
       active: false,
       bookmark: true,
     },

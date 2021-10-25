@@ -194,11 +194,13 @@ const Instalacion = () => {
       }
     });
   };
+
   const cancelar = () => {
-    localStorage.setItem("myArray", JSON.stringify([]));
+    const array = [];
+    localStorage.setItem("myArray", JSON.stringify(array));
     setForm({
+      ...form,
       id: "",
-      tipo_id: "",
       uservicio_id: "",
       user_id: "",
       fecha: "",
@@ -283,6 +285,7 @@ const Instalacion = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let userid = JSON.parse(localStorage.getItem("usuario"));
     setLoading(true);
     const config = {
       headers: {
@@ -295,7 +298,7 @@ const Instalacion = () => {
         {
           tipo_id: form.tipo_id,
           uservicio_id: 1,
-          user_id: 2,
+          user_id: userid.id,
           fecha: "2021-08-13 19:07:45",
           sub_total: form.sub_total,
           utilidad: form.utilidad,
