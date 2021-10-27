@@ -286,6 +286,20 @@ const Instalacion = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let userid = JSON.parse(localStorage.getItem("usuario"));
+    let f = new Date();
+    let fechahora = (
+      f.getFullYear() +
+      "-" +
+      (f.getMonth() + 1) +
+      "-" +
+      f.getDate() +
+      " " +
+      f.getHours() +
+      ":" +
+      f.getMinutes() +
+      ":" +
+      f.getSeconds()
+    ).toString();
     setLoading(true);
     const config = {
       headers: {
@@ -299,7 +313,7 @@ const Instalacion = () => {
           tipo_id: form.tipo_id,
           uservicio_id: 1,
           user_id: userid.id,
-          fecha: "2021-08-13 19:07:45",
+          fecha: fechahora,
           sub_total: form.sub_total,
           utilidad: form.utilidad,
           igv: form.igv,

@@ -9,7 +9,6 @@ import store from "./store/index";
 import ConfigDB from "./data/customizer/config";
 const array = [];
 localStorage.setItem("myArray", JSON.stringify(array));
-
 const Root = (props) => {
   const [anim, setAnim] = useState("");
   const animation =
