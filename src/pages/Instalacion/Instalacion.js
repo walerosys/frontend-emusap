@@ -97,14 +97,9 @@ const Instalacion = () => {
     }
     if (val == true || actividad.id == "") {
       MySwal.fire({
-        didOpen: () => {
-          MySwal.clickConfirm();
-        },
-      }).then(() => {
-        return MySwal.fire({
-          title: "Aviso",
-          text: "Elija una actividad diferente!",
-        });
+        icon: "error",
+        title: "Error",
+        text: "Elija por lo menos una actividad diferente.",
       });
     } else {
       array.push({
