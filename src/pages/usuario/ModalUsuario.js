@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Modal,
   ModalHeader,
@@ -28,10 +28,19 @@ const ModalUsuario = ({ modal, toggle, usuario, saveUsuario }) => {
       password_confirmation: usuario.password_confirmation,
     },
   });
+  const [msg, setMsg] = useState(false);
 
   const onSubmit = (data) => {
     console.log(data);
-    saveUsuario(data);
+    if (usuario.id !== "") {
+      saveUsuario(data);
+    } else {
+      if (data.password !== data.password_confirmation) {
+        setMsg(true);
+      } else {
+        saveUsuario(data);
+      }
+    }
   };
   return (
     <Modal isOpen={modal} toggle={toggle} size="md" centered>
@@ -39,7 +48,7 @@ const ModalUsuario = ({ modal, toggle, usuario, saveUsuario }) => {
         style={{ background: "#02a499", color: "#fff" }}
         toggle={toggle}
       >
-        {usuario.id !== "" ? "Editar Tipo" : "Tipo de Inst."}
+        {usuario.id !== "" ? "Editar Usuario" : "Nuevo Usuario"}
       </ModalHeader>
       <ModalBody>
         <Form
@@ -197,7 +206,13 @@ const ModalUsuario = ({ modal, toggle, usuario, saveUsuario }) => {
               <br />
             </>
           )}
-
+          <Row>
+            {msg ? (
+              <span className="validacion">
+                {errors && "Las Contraseñas no coinciden"}
+              </span>
+            ) : null}
+          </Row>
           <Row>
             <Col className="text-right">
               <Button color="success">Guardar</Button>
